@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pembuatan Tugas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function validateForm() {
+            var title = document.forms["taskForm"]["title"].value;
+            var description = document.forms["taskForm"]["description"].value;
+            var errorMessage = "";
+
+            if (title == "") {
+                errorMessage += "Judul tugas tidak boleh kosong.\n";
+            }
+
+            if (description.length < 10) {
+                errorMessage += "Deskripsi tugas harus memiliki minimal 10 karakter.\n";
+            }
+
+            if (errorMessage) {
+                alert(errorMessage);
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6">Buat Tugas Baru</h1>
+        <form name="taskForm" onsubmit="return validateForm()">
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700 font-semibold mb-2">Judul Tugas:</label>
+                <input type="text" id="title" name="title" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="mb-6">
+                <label for="description" class="block text-gray-700 font-semibold mb-2">Deskripsi Tugas:</label>
+                <textarea id="description" name="description" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4"></textarea>
+            </div>
+
+            <div>
+                <input type="submit" value="Buat Tugas" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
